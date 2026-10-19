@@ -1,0 +1,22 @@
+{
+  "mode": "interactive",
+  "granularity": "standard",
+  "parallelization": false,
+  "commit_docs": true,
+  "model_profile": "inherit",
+  "workflow": {
+    "research": true,
+    "plan_check": false,
+    "verifier": true
+  },
+  "plan_review": {
+    "source_grounding": false
+  },
+  "ship": {
+    "pr_body_sections": []
+  },
+  "homework_rules": {
+    "pause_per_part": true,
+    "description": "For each homework part, I implement and then pause. You review, approve, then I proceed to the next part. You run the CLI conversations yourself to observe behavior."
+  }
+}
