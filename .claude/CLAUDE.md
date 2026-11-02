@@ -16,6 +16,12 @@ This repo is my own homework for the AI Evals course. The point is to do the wor
 - The agent under test runs on a small model (`gpt-4o-mini`, `gpt-5-nano`, or `claude-haiku-4-5`). Do not change `CARTWHEEL_MODEL` unless I ask.
 - For HW4 (trace review and failure modes), I write the annotations and failure-mode definitions. You may build tooling, but do not label traces for me.
 
+## Course material
+
+- Lecture slides and the course reader live in `course-material/` (`pdf/` originals, `md/` conversions). The folder is git-ignored because the material is licensed and this repo is public. Never commit, quote at length, or upload it.
+- When teaching a homework, read the matching lesson in `course-material/md/` first and use its terms. Search the reader (`evaluating-improving-ai-agents-shankar-2026.md`) with `rg` for the topic; do not read all of it.
+- The "No reference solutions" rule applies here too: skip any worked homework answers.
+
 ## Upstream
 
 - Get new course releases with `git fetch upstream && git merge upstream/main`. Never squash or rebase upstream history.
