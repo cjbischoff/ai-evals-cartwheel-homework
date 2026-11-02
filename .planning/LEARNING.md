@@ -20,7 +20,7 @@ Teaching mode: I write all homework code and run all commands. The agent explain
 | 3 | Root span and prompt versions: write `post_message` | C | done, checked in Langfuse |
 | 4 | Testing: write `tests/test_observability.py` | D | done |
 | 5 | Live traces in Langfuse (setup checklist) | E | done |
-| 6 | Prompt comparison, `hw2-traces.json`, commit and PR | F | next |
+| 6 | Prompt comparison, `hw2-traces.json`, commit and PR | F | done (PR #6) |
 
 Video: recorded by me after Lesson 6.
 
@@ -48,3 +48,23 @@ Video: recorded by me after Lesson 6.
 - 2026-11-02: hw2-traces.json written from Langfuse data: 66f6e7d1 (shopper, allowed) and d8e66ba7 (merchant, denied). Both final_status completed. Next: commit and PR.
 - 2026-11-02: Full suite: 1 failure, test_m2_run_judge_persists_store_predictions_for_prevalence. Root cause: litellm/__init__.py:27 runs load_dotenv() on import, so the Langfuse keys added to .env in Lesson 5 make analysis use live Langfuse (no Module 2 traces). Not an HW2 bug. With LANGFUSE_PUBLIC_KEY= set empty: 0 failures. Decision on fix pending.
 - 2026-11-02: Suite decision: option 1 (no file changes; run with LANGFUSE_PUBLIC_KEY= and note in PR). PR body drafted at .git/PR_BODY_HW2.md. Next: user runs commit and PR commands.
+- 2026-11-02: Lesson 6 done. User committed (21ac130, 2194f16), pushed, opened PR #6. Remaining: video (user), merge PR #6.
+
+## HW2 video checklist (pending, recorded by me)
+
+Keep Docker and the server running; the permalinks point to local Langfuse.
+
+1. Run one authentication test: `uv run pytest tests/test_observability.py -k cannot_authorize -v`
+2. Read traces `66f6e7d1` (shopper, allowed) and `d8e66ba7` (merchant, denied) from the root span to the final reply.
+3. Explain identity: database check in `create_session`, ID card kept in server memory, signed token (an edited token gets 401).
+4. Explain the tool calls: `get_order` allowed (`permission_denied = false`), `get_order` denied (`true`, with reason).
+5. Show the Part F versions: `cdfb0444e3d3` (trace `66f6e7d1`) and `d108f6949e5e` (trace `f561e359`).
+6. Regenerate the span count on camera (expected 6 for both selected traces):
+   `curl -s -u pk-lf-cartwheel-dev:sk-lf-cartwheel-dev "http://localhost:3000/api/public/observations?traceId=d8e66ba7ca143b9464fd3a5f4bf79a80&limit=100" | jq '.data | length'`
+   "Regenerate" follows the HW1 and HW3 handouts: recount the value from the source on camera.
+
+## Known issues
+
+- Full suite with Langfuse keys in `.env`: `test_m2_run_judge_persists_store_predictions_for_prevalence` fails. `litellm/__init__.py:27` loads `.env` on import. Run `LANGFUSE_PUBLIC_KEY= uv run pytest`. Course files unchanged (decision 2026-11-02).
+- HW1 recording is an asciinema terminal cast (`homework/module-1/artifacts/hw1.cast`), no voice. The HW1 handout asks for an explanation. Check with the instructor that a cast is accepted.
+- Dependabot: alerts are all in the course lockfile `uv.lock`. Decision pending (see 2026-11-02 log).
