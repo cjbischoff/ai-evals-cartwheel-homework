@@ -22,3 +22,6 @@ scenarios/demo_pilot_gt.json
 
 # Local Claude Code settings
 .claude/settings.local.json
+
+# Licensed course PDFs and their Markdown conversions. Never commit (public repo).
+course-material/
