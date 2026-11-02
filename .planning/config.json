@@ -17,6 +17,7 @@
   },
   "homework_rules": {
     "pause_per_part": true,
-    "description": "For each homework part, I implement and then pause. You review, approve, then I proceed to the next part. You run the CLI conversations yourself to observe behavior."
+    "student_implements": false,
+    "description": "Teaching mode, bigger steps. The agent writes the homework code one part at a time and explains each piece in plain language (student has no coding background). Write the test first, show it fail, then the code, show it pass. After each part, ask one short check question, pause for review, and update .planning/LEARNING.md. The student runs the live conversations, records the video, and makes the assessments."
   }
 }
